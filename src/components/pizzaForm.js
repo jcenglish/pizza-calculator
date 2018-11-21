@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Grid, TextField, Typography, Button, Icon } from "@material-ui/core"
-import { default as costPerSqIn } from "../utilities/bangForBuck"
+import { default as costPerSqIn } from "../utilities/costPerSqIn"
 
 class PizzaForm extends Component {
   constructor(props) {
