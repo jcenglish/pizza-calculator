@@ -27,7 +27,6 @@ class PizzaForm extends Component {
     const { diameter, price, place, type } = event.target
     const cost = costPerSqIn(diameter.value, price.value).toFixed(2)
     const { addPizza, incrementId, id } = this.props
-    console.log(cost)
     addPizza({
       diameter: diameter.value,
       price: price.value,

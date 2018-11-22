@@ -12,7 +12,7 @@ class App extends Component {
 
     this.addPizza = this.addPizza.bind(this)
     this.incrementId = this.incrementId.bind(this)
-    // this.removePizza = this.removePizza(this)
+    this.removePizza = this.removePizza.bind(this)
   }
 
   incrementId() {
@@ -27,11 +27,11 @@ class App extends Component {
     }))
   }
 
-  // removePizza(pizzaId) {
-  //   this.setState(prevState => ({
-  //     list: prevState.list.filter(pizza => pizza.id !== pizzaId)
-  //   }))
-  // }
+  removePizza(pizzaId) {
+    this.setState(prevState => ({
+      list: prevState.list.filter(pizza => pizza.id !== pizzaId)
+    }))
+  }
 
   render() {
     return (
@@ -41,7 +41,7 @@ class App extends Component {
           id={this.state.idCounter}
           incrementId={this.incrementId}
         />
-        <PizzaList list={this.state.list} />
+        <PizzaList list={this.state.list} removePizza={this.removePizza} />
       </div>
     )
   }

@@ -9,20 +9,20 @@ import {
 } from "@material-ui/core"
 
 const Pizza = props => {
-  const { price, costPerSqIn, diameter, place, type } = props
+  const { price, costPerSqIn, diameter, place, type, removePizza, id } = props
   return (
     <Card>
       <CardContent>
-        <Typography variant="h3" align="center">
+        <Typography variant="subtitle1" align="center">
           {place}: {type} - {diameter}"
         </Typography>
-        <Typography variant="h4">Cost Per Square Inch:</Typography>
-        <Typography variant="h5">${costPerSqIn}</Typography>
-        <Typography variant="h4">Total Cost:</Typography>
-        <Typography variant="h5">${price}</Typography>
+        <Typography variant="subtitle2">Cost Per Square Inch:</Typography>
+        <Typography variant="body1">${costPerSqIn}</Typography>
+        <Typography variant="body2">Total Cost:</Typography>
+        <Typography variant="subtitle2">${price}</Typography>
       </CardContent>
       <CardActions>
-        <IconButton color="secondary">
+        <IconButton color="secondary" onClick={() => removePizza(id)}>
           <Icon>delete</Icon>
         </IconButton>
       </CardActions>
