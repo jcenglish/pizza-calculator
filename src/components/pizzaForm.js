@@ -1,7 +1,13 @@
 import React, { Component } from "react"
 import { Grid, TextField, Typography, Button, Icon } from "@material-ui/core"
 import { default as costPerSqIn } from "../utilities/costPerSqIn"
+import { withStyles } from "@material-ui/core/styles"
 
+const styles = {
+  form: {
+    marginBottom: "8px"
+  }
+}
 class PizzaForm extends Component {
   constructor(props) {
     super(props)
@@ -46,7 +52,7 @@ class PizzaForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className={this.props.classes.form}>
         <Grid container direction="column" justify="center" alignItems="center">
           <Typography variant="h2">Pizza</Typography>
           <TextField
@@ -97,4 +103,4 @@ class PizzaForm extends Component {
   }
 }
 
-export default PizzaForm
+export default withStyles(styles)(PizzaForm)
