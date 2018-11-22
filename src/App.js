@@ -1,7 +1,14 @@
 import React, { Component } from "react"
 import "./App.css"
 import { Header, Footer, PizzaForm, PizzaList } from "./components"
+import CssBaseline from "@material-ui/core/CssBaseline"
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
 
+const theme = createMuiTheme({
+  palette: {
+    type: "dark"
+  }
+})
 class App extends Component {
   constructor() {
     super()
@@ -36,12 +43,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <PizzaForm
-          addPizza={this.addPizza}
-          id={this.state.idCounter}
-          incrementId={this.incrementId}
-        />
-        <PizzaList list={this.state.list} removePizza={this.removePizza} />
+        <MuiThemeProvider theme={theme}>
+          <CssBaseline />
+          <PizzaForm
+            addPizza={this.addPizza}
+            id={this.state.idCounter}
+            incrementId={this.incrementId}
+          />
+          <PizzaList list={this.state.list} removePizza={this.removePizza} />
+        </MuiThemeProvider>
       </div>
     )
   }

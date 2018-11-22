@@ -5,7 +5,13 @@ import { Grid } from "@material-ui/core"
 const PizzaList = props => {
   const { list, removePizza } = props
   return (
-    <Grid container direction="row" justify="center" alignItems="center">
+    <Grid
+      container
+      spacing={8}
+      direction="row"
+      justify="center"
+      alignItems="center"
+    >
       {list.map(pizza => (
         <Grid item key={pizza.id}>
           <Pizza
