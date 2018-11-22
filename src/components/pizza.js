@@ -17,7 +17,7 @@ const Pizza = props => {
           {place}: {type} - {diameter}"
         </Typography>
         <Typography variant="h4">Cost Per Square Inch:</Typography>
-        <Typography variant="h5">{costPerSqIn}</Typography>
+        <Typography variant="h5">${costPerSqIn}</Typography>
         <Typography variant="h4">Total Cost:</Typography>
         <Typography variant="h5">${price}</Typography>
       </CardContent>

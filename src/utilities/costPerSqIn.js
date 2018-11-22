@@ -1,5 +1,5 @@
 export default function(diameter, price) {
-  let area = Math.PI * (Number(diameter) / 2) ** 2
-  console.log(area)
+  const area = Math.PI * (Number(diameter) / 2) ** 2
+  console.log(diameter + ", " + price)
   return Number(price) / area
 }

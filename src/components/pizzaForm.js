@@ -6,9 +6,8 @@ class PizzaForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      costPerSqIn: 0,
-      diameter: 0,
-      price: 0,
+      diameter: "0",
+      price: "0",
       place: "",
       type: ""
     }
@@ -23,55 +22,78 @@ class PizzaForm extends Component {
     })
   }
 
-  handleSubmit = () => {
+  handleSubmit = event => {
+    event.preventDefault()
+    const { diameter, price, place, type } = event.target
+    const cost = costPerSqIn(diameter.value, price.value).toFixed(2)
+    const { addPizza, incrementId, id } = this.props
+    console.log(cost)
+    addPizza({
+      diameter: diameter.value,
+      price: price.value,
+      place: place.value,
+      type: type.value,
+      costPerSqIn: cost,
+      id
+    })
+    incrementId()
     this.setState({
-      costPerSqIn: costPerSqIn(this.state.diameter, this.state.price).toFixed(2)
+      diameter: "",
+      price: "",
+      place: "",
+      type: ""
     })
   }
 
   render() {
     return (
-      <Grid container direction="column" justify="center" alignItems="center">
-        <Typography variant="h2">Pizza</Typography>
-        <TextField
-          margin="normal"
-          name="place"
-          type="text"
-          label="Place"
-          variant="outlined"
-          onChange={this.handleChange}
-        />
-        <TextField
-          margin="normal"
-          name="type"
-          type="text"
-          label="Type"
-          variant="outlined"
-          onChange={this.handleChange}
-        />
-        <TextField
-          margin="normal"
-          name="diameter"
-          type="number"
-          min="1"
-          label="Diameter"
-          variant="outlined"
-          onChange={this.handleChange}
-        />
-        <TextField
-          margin="normal"
-          name="price"
-          type="number"
-          min="0"
-          label="Price"
-          variant="outlined"
-          onChange={this.handleChange}
-        />
-        <Button onClick={this.handleSubmit} variant="contained" color="primary">
-          <Icon>add</Icon>
-          &#32;Save Pizza Value
-        </Button>
-      </Grid>
+      <form onSubmit={this.handleSubmit}>
+        <Grid container direction="column" justify="center" alignItems="center">
+          <Typography variant="h2">Pizza</Typography>
+          <TextField
+            margin="normal"
+            name="place"
+            value={this.state.place}
+            type="text"
+            label="Place"
+            variant="outlined"
+            onChange={this.handleChange}
+          />
+          <TextField
+            value={this.state.type}
+            margin="normal"
+            name="type"
+            type="text"
+            label="Type"
+            variant="outlined"
+            onChange={this.handleChange}
+          />
+          <TextField
+            value={this.state.diameter}
+            margin="normal"
+            name="diameter"
+            type="number"
+            min="1"
+            label="Diameter"
+            variant="outlined"
+            onChange={this.handleChange}
+          />
+          <TextField
+            value={this.state.price}
+            margin="normal"
+            name="price"
+            type="number"
+            min="0"
+            label="Price"
+            variant="outlined"
+            onChange={this.handleChange}
+          />
+          <Button type="submit" variant="contained" color="primary">
+            <Icon>add</Icon>
+            &#32;Save Pizza Value
+          </Button>
+        </Grid>
+      </form>
     )
   }
 }

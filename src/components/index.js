@@ -1,3 +1,5 @@
 export { default as Header } from "./header"
 export { default as Footer } from "./footer"
 export { default as PizzaForm } from "./pizzaForm"
+export { default as Pizza } from "./pizza"
+export { default as PizzaList } from "./pizzaList"
